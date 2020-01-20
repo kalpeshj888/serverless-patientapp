@@ -23,6 +23,7 @@ provider:
     PATIENTS_TABLE: Patients-${self:provider.stage}
     REQUESTS_TABLE: PatientsRequests-${self:provider.stage}
     REQUEST_ID_INDEX: RequestIdIndex
+    REQUESTFILE_S3_BUCKET: patientapp-kalpeshj777-requestfile-${self:provider.stage}
 
   iamRoleStatements:
     - Effect: Allow
@@ -127,7 +128,23 @@ functions:
           - dynamodb:GetItem
         Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.REQUESTS_TABLE}
 
-        
+  CreateRequest:
+    handler: src/lambda/http/createRequest.handler
+    events:
+      - http:
+         method: post
+         path: patients/{patientId}/requests
+         cors: true
+         authorizer: Auth
+         reqValidatorName: RequestBodyValidator
+    iamRoleStatements:
+      - Effect: Allow
+        Action:
+          - dynamodb:PutItem
+          - dynamodb:Query
+          - dynamodb:Scan
+        Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.REQUESTS_TABLE}
+
 resources:
   Resources:
     # TODO: Add any necessary AWS resources
@@ -162,6 +179,8 @@ resources:
             AttributeType: S
           - AttributeName: timestamp
             AttributeType: S
+          - AttributeName: requestId
+            AttributeType: S
         KeySchema:
           - AttributeName: patientId
             KeyType: HASH
@@ -176,3 +195,36 @@ resources:
               KeyType: HASH
             Projection:
               ProjectionType: ALL
+              
+    AttachmentsBucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: ${self:provider.environment.REQUESTFILE_S3_BUCKET}
+        CorsConfiguration:
+          CorsRules:
+            -
+              AllowedOrigins:
+                - '*'
+              AllowedHeaders:
+                - '*'
+              AllowedMethods:
+                - GET
+                - PUT
+                - POST
+                - DELETE
+                - HEAD
+              MaxAge: 3000
+              
+    BucketPolicy:
+      Type: AWS::S3::BucketPolicy
+      Properties:
+        PolicyDocument:
+          Id: MyPolicy
+          Version: "2012-10-17"
+          Statement:
+            - Sid: PublicReadForGetBucketObjects
+              Effect: Deny
+              Principal: '*'
+              Action: 's3:GetObject'
+              Resource: 'arn:aws:s3:::${self:provider.environment.REQUESTFILE_S3_BUCKET}/*'
+        Bucket: !Ref AttachmentsBucket
