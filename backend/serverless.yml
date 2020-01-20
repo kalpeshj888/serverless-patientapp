@@ -24,6 +24,7 @@ provider:
     REQUESTS_TABLE: PatientsRequests-${self:provider.stage}
     REQUEST_ID_INDEX: RequestIdIndex
     REQUESTFILE_S3_BUCKET: patientapp-kalpeshj777-requestfile-${self:provider.stage}
+    SIGNED_URL_EXPIRATION: 300
 
   iamRoleStatements:
     - Effect: Allow
@@ -37,6 +38,9 @@ provider:
     #    - dynamodb:PutItem
     #    - dynamodb:GetItem
     #  Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.PATIENTS_TABLE}
+custom:
+  topicName: requestsTopic-${self:provider.stage}
+
 functions:
   Auth:
     handler: src/lambda/auth/auth0Authorizer.handler
@@ -144,6 +148,11 @@ functions:
           - dynamodb:Query
           - dynamodb:Scan
         Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.REQUESTS_TABLE}
+      - Effect: Allow
+        Action:
+          - s3:PutObject
+          - s3:GetObject
+        Resource: arn:aws:s3:::${self:provider.environment.REQUESTFILE_S3_BUCKET}/*
 
 resources:
   Resources:
@@ -200,6 +209,10 @@ resources:
       Type: AWS::S3::Bucket
       Properties:
         BucketName: ${self:provider.environment.REQUESTFILE_S3_BUCKET}
+        NotificationConfiguration:
+          TopicConfigurations:
+            - Event: s3:ObjectCreated:Put
+              Topic: !Ref RequestsTopic
         CorsConfiguration:
           CorsRules:
             -
@@ -228,3 +241,28 @@ resources:
               Action: 's3:GetObject'
               Resource: 'arn:aws:s3:::${self:provider.environment.REQUESTFILE_S3_BUCKET}/*'
         Bucket: !Ref AttachmentsBucket
+
+    SNSTopicPolicy:
+      Type: AWS::SNS::TopicPolicy
+      Properties:
+        PolicyDocument:
+          Version: "2012-10-17"
+          Statement:
+            - Effect: Allow
+              Principal:
+                AWS: "*"
+              Action: sns:Publish
+              Resource:
+                !Ref RequestsTopic
+              Condition:
+                ArnLike:
+                  AWS:SourceArn: arn:aws:s3:::${self:provider.environment.REQUESTFILE_S3_BUCKET}
+        Topics:
+          - !Ref RequestsTopic
+
+
+    RequestsTopic:
+      Type: AWS::SNS::Topic
+      Properties:
+        DisplayName: Request bucket topic
+        TopicName: ${self:custom.topicName}

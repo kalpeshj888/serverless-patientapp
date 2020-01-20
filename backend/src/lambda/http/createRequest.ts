@@ -10,6 +10,11 @@ const logger = createLogger('CreateRequest')
 const docClient = new AWS.DynamoDB.DocumentClient()
 const requestTable = process.env.REQUESTS_TABLE
 const bucketName = process.env.REQUESTFILE_S3_BUCKET
+const urlExpiration = 300
+const s3 = new AWS.S3({
+    signatureVersion: 'v4'
+  })
+
 
 export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
 
@@ -18,6 +23,8 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
   const requestId = uuid.v4()
   const timestamp =  new Date().toISOString()  
   const newRequest: CreateRequestRequest = JSON.parse(event.body)
+
+  const url = getUploadUrl(requestId)
   
   const item = {
     patientId: patientId, 
@@ -40,7 +47,16 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
       'Access-Control-Allow-Credentials': true
     },
     body: JSON.stringify({
-      item
+      item,
+      uploadURL: url
     })
   }
+}
+
+function getUploadUrl (requestId : string){
+    return s3.getSignedUrl('putObject', {
+        Bucket: bucketName,
+        Key: requestId,
+        Expires: urlExpiration
+    })
 }

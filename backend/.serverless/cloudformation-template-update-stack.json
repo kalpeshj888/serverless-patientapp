@@ -190,7 +190,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-patient-app/dev/1579538390956-2020-01-20T16:39:50.956Z/serverless-patient-app.zip"
+          "S3Key": "serverless/serverless-patient-app/dev/1579554764032-2020-01-20T21:12:44.032Z/serverless-patient-app.zip"
         },
         "FunctionName": "serverless-patient-app-dev-Auth",
         "Handler": "src/lambda/auth/auth0Authorizer.handler",
@@ -209,7 +209,8 @@
             "PATIENTS_TABLE": "Patients-dev",
             "REQUESTS_TABLE": "PatientsRequests-dev",
             "REQUEST_ID_INDEX": "RequestIdIndex",
-            "REQUESTFILE_S3_BUCKET": "patientapp-kalpeshj777-requestfile-dev"
+            "REQUESTFILE_S3_BUCKET": "patientapp-kalpeshj777-requestfile-dev",
+            "SIGNED_URL_EXPIRATION": 300
           }
         }
       },
@@ -218,14 +219,14 @@
         "IamRoleLambdaExecution"
       ]
     },
-    "AuthLambdaVersionRA3caGWB1PaeUUVuhJ7A6bODj2TlsYM4cn9ZL1Omq9g": {
+    "AuthLambdaVersion1zPhk72omUiysXqxtZWyrcWMgIWYyJHkDPx7QzoEE": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "AuthLambdaFunction"
         },
-        "CodeSha256": "K0EZa3QFZM6Ms4ZwPy68z9wrByacGXXIYcz3YXNN7dE="
+        "CodeSha256": "FodeNSef+JPSJceoH0EHCbUkp+G3jOvd/4F2H7sfbCk="
       }
     },
     "GetPatientsLambdaFunction": {
@@ -235,7 +236,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-patient-app/dev/1579538390956-2020-01-20T16:39:50.956Z/serverless-patient-app.zip"
+          "S3Key": "serverless/serverless-patient-app/dev/1579554764032-2020-01-20T21:12:44.032Z/serverless-patient-app.zip"
         },
         "FunctionName": "serverless-patient-app-dev-GetPatients",
         "Handler": "src/lambda/http/getPatients.handler",
@@ -254,7 +255,8 @@
             "PATIENTS_TABLE": "Patients-dev",
             "REQUESTS_TABLE": "PatientsRequests-dev",
             "REQUEST_ID_INDEX": "RequestIdIndex",
-            "REQUESTFILE_S3_BUCKET": "patientapp-kalpeshj777-requestfile-dev"
+            "REQUESTFILE_S3_BUCKET": "patientapp-kalpeshj777-requestfile-dev",
+            "SIGNED_URL_EXPIRATION": 300
           }
         }
       },
@@ -263,14 +265,14 @@
         "GetPatientsLogGroup"
       ]
     },
-    "GetPatientsLambdaVersion9Ta7s89AV5ENcJoeFpAphmlM92QUMVlvs0TZST6aA": {
+    "GetPatientsLambdaVersionkCQKt5g0ocXVwyptKiUdxBrtTZuKwMOh4OfjNV3urU": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GetPatientsLambdaFunction"
         },
-        "CodeSha256": "K0EZa3QFZM6Ms4ZwPy68z9wrByacGXXIYcz3YXNN7dE="
+        "CodeSha256": "FodeNSef+JPSJceoH0EHCbUkp+G3jOvd/4F2H7sfbCk="
       }
     },
     "CreatePatientLambdaFunction": {
@@ -280,7 +282,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-patient-app/dev/1579538390956-2020-01-20T16:39:50.956Z/serverless-patient-app.zip"
+          "S3Key": "serverless/serverless-patient-app/dev/1579554764032-2020-01-20T21:12:44.032Z/serverless-patient-app.zip"
         },
         "FunctionName": "serverless-patient-app-dev-CreatePatient",
         "Handler": "src/lambda/http/createPatient.handler",
@@ -299,7 +301,8 @@
             "PATIENTS_TABLE": "Patients-dev",
             "REQUESTS_TABLE": "PatientsRequests-dev",
             "REQUEST_ID_INDEX": "RequestIdIndex",
-            "REQUESTFILE_S3_BUCKET": "patientapp-kalpeshj777-requestfile-dev"
+            "REQUESTFILE_S3_BUCKET": "patientapp-kalpeshj777-requestfile-dev",
+            "SIGNED_URL_EXPIRATION": 300
           }
         }
       },
@@ -308,14 +311,14 @@
         "CreatePatientLogGroup"
       ]
     },
-    "CreatePatientLambdaVersion9gO8pi9neGi3zBCjbYYx3Fu0wb3Fah7nK9B6y4murwU": {
+    "CreatePatientLambdaVersionup3Ef9CQl81ZyK9ZfEYlbCQv37XCWmlLDT96G2Fu0": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "CreatePatientLambdaFunction"
         },
-        "CodeSha256": "K0EZa3QFZM6Ms4ZwPy68z9wrByacGXXIYcz3YXNN7dE="
+        "CodeSha256": "FodeNSef+JPSJceoH0EHCbUkp+G3jOvd/4F2H7sfbCk="
       }
     },
     "DeletePatientLambdaFunction": {
@@ -325,7 +328,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-patient-app/dev/1579538390956-2020-01-20T16:39:50.956Z/serverless-patient-app.zip"
+          "S3Key": "serverless/serverless-patient-app/dev/1579554764032-2020-01-20T21:12:44.032Z/serverless-patient-app.zip"
         },
         "FunctionName": "serverless-patient-app-dev-DeletePatient",
         "Handler": "src/lambda/http/deletePatient.handler",
@@ -344,7 +347,8 @@
             "PATIENTS_TABLE": "Patients-dev",
             "REQUESTS_TABLE": "PatientsRequests-dev",
             "REQUEST_ID_INDEX": "RequestIdIndex",
-            "REQUESTFILE_S3_BUCKET": "patientapp-kalpeshj777-requestfile-dev"
+            "REQUESTFILE_S3_BUCKET": "patientapp-kalpeshj777-requestfile-dev",
+            "SIGNED_URL_EXPIRATION": 300
           }
         }
       },
@@ -353,14 +357,14 @@
         "DeletePatientLogGroup"
       ]
     },
-    "DeletePatientLambdaVersionDvILhTcNvXXZvh3IeJ54YqTQVVl83CayzEejozomjsI": {
+    "DeletePatientLambdaVersionxmcm7p82gnEsNwmPHXxD9JzNkly35bcya5wFRSDCGgE": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "DeletePatientLambdaFunction"
         },
-        "CodeSha256": "K0EZa3QFZM6Ms4ZwPy68z9wrByacGXXIYcz3YXNN7dE="
+        "CodeSha256": "FodeNSef+JPSJceoH0EHCbUkp+G3jOvd/4F2H7sfbCk="
       }
     },
     "UpdatePatientLambdaFunction": {
@@ -370,7 +374,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-patient-app/dev/1579538390956-2020-01-20T16:39:50.956Z/serverless-patient-app.zip"
+          "S3Key": "serverless/serverless-patient-app/dev/1579554764032-2020-01-20T21:12:44.032Z/serverless-patient-app.zip"
         },
         "FunctionName": "serverless-patient-app-dev-UpdatePatient",
         "Handler": "src/lambda/http/updatePatient.handler",
@@ -389,7 +393,8 @@
             "PATIENTS_TABLE": "Patients-dev",
             "REQUESTS_TABLE": "PatientsRequests-dev",
             "REQUEST_ID_INDEX": "RequestIdIndex",
-            "REQUESTFILE_S3_BUCKET": "patientapp-kalpeshj777-requestfile-dev"
+            "REQUESTFILE_S3_BUCKET": "patientapp-kalpeshj777-requestfile-dev",
+            "SIGNED_URL_EXPIRATION": 300
           }
         }
       },
@@ -398,14 +403,14 @@
         "UpdatePatientLogGroup"
       ]
     },
-    "UpdatePatientLambdaVersionp2OQWEk59njehDjXkBTVgZM5uaTFFhwkFnTxXKic": {
+    "UpdatePatientLambdaVersiontvxkhPPOR9J8DWc7NiMUGOp0lXhRuCsimtjDsTdo": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "UpdatePatientLambdaFunction"
         },
-        "CodeSha256": "K0EZa3QFZM6Ms4ZwPy68z9wrByacGXXIYcz3YXNN7dE="
+        "CodeSha256": "FodeNSef+JPSJceoH0EHCbUkp+G3jOvd/4F2H7sfbCk="
       }
     },
     "GetRequestsLambdaFunction": {
@@ -415,7 +420,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-patient-app/dev/1579538390956-2020-01-20T16:39:50.956Z/serverless-patient-app.zip"
+          "S3Key": "serverless/serverless-patient-app/dev/1579554764032-2020-01-20T21:12:44.032Z/serverless-patient-app.zip"
         },
         "FunctionName": "serverless-patient-app-dev-GetRequests",
         "Handler": "src/lambda/http/getRequests.handler",
@@ -434,7 +439,8 @@
             "PATIENTS_TABLE": "Patients-dev",
             "REQUESTS_TABLE": "PatientsRequests-dev",
             "REQUEST_ID_INDEX": "RequestIdIndex",
-            "REQUESTFILE_S3_BUCKET": "patientapp-kalpeshj777-requestfile-dev"
+            "REQUESTFILE_S3_BUCKET": "patientapp-kalpeshj777-requestfile-dev",
+            "SIGNED_URL_EXPIRATION": 300
           }
         }
       },
@@ -443,14 +449,14 @@
         "GetRequestsLogGroup"
       ]
     },
-    "GetRequestsLambdaVersion5ZA01Sa5jlLrYoABiiexHlQPaKz35eimCyzsStfhE": {
+    "GetRequestsLambdaVersionLydzHD2AzTtkzN0XBIedBM5anY0H4x9BS3mYsPbBPSs": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GetRequestsLambdaFunction"
         },
-        "CodeSha256": "K0EZa3QFZM6Ms4ZwPy68z9wrByacGXXIYcz3YXNN7dE="
+        "CodeSha256": "FodeNSef+JPSJceoH0EHCbUkp+G3jOvd/4F2H7sfbCk="
       }
     },
     "CreateRequestLambdaFunction": {
@@ -460,7 +466,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-patient-app/dev/1579538390956-2020-01-20T16:39:50.956Z/serverless-patient-app.zip"
+          "S3Key": "serverless/serverless-patient-app/dev/1579554764032-2020-01-20T21:12:44.032Z/serverless-patient-app.zip"
         },
         "FunctionName": "serverless-patient-app-dev-CreateRequest",
         "Handler": "src/lambda/http/createRequest.handler",
@@ -479,7 +485,8 @@
             "PATIENTS_TABLE": "Patients-dev",
             "REQUESTS_TABLE": "PatientsRequests-dev",
             "REQUEST_ID_INDEX": "RequestIdIndex",
-            "REQUESTFILE_S3_BUCKET": "patientapp-kalpeshj777-requestfile-dev"
+            "REQUESTFILE_S3_BUCKET": "patientapp-kalpeshj777-requestfile-dev",
+            "SIGNED_URL_EXPIRATION": 300
           }
         }
       },
@@ -488,14 +495,14 @@
         "CreateRequestLogGroup"
       ]
     },
-    "CreateRequestLambdaVersionOZSHG4m0ZgJ9ZDiw5RV9KJlgP2X8tX2QbOh4SizzI": {
+    "CreateRequestLambdaVersionYlbeuxndgIVq1kLwumCbsBSuKaybTyAqkqBjX0PBAtg": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "CreateRequestLambdaFunction"
         },
-        "CodeSha256": "K0EZa3QFZM6Ms4ZwPy68z9wrByacGXXIYcz3YXNN7dE="
+        "CodeSha256": "FodeNSef+JPSJceoH0EHCbUkp+G3jOvd/4F2H7sfbCk="
       }
     },
     "ApiGatewayRestApi": {
@@ -996,7 +1003,7 @@
         "Type": "TOKEN"
       }
     },
-    "ApiGatewayDeployment1579538346927": {
+    "ApiGatewayDeployment1579554737420": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -1697,6 +1704,14 @@
                     "dynamodb:Scan"
                   ],
                   "Resource": "arn:aws:dynamodb:us-east-2:*:table/PatientsRequests-dev"
+                },
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "s3:PutObject",
+                    "s3:GetObject"
+                  ],
+                  "Resource": "arn:aws:s3:::patientapp-kalpeshj777-requestfile-dev/*"
                 }
               ]
             }
@@ -1802,6 +1817,16 @@
       "Type": "AWS::S3::Bucket",
       "Properties": {
         "BucketName": "patientapp-kalpeshj777-requestfile-dev",
+        "NotificationConfiguration": {
+          "TopicConfigurations": [
+            {
+              "Event": "s3:ObjectCreated:Put",
+              "Topic": {
+                "Ref": "RequestsTopic"
+              }
+            }
+          ]
+        },
         "CorsConfiguration": {
           "CorsRules": [
             {
@@ -1844,6 +1869,43 @@
           "Ref": "AttachmentsBucket"
         }
       }
+    },
+    "SNSTopicPolicy": {
+      "Type": "AWS::SNS::TopicPolicy",
+      "Properties": {
+        "PolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Principal": {
+                "AWS": "*"
+              },
+              "Action": "sns:Publish",
+              "Resource": {
+                "Ref": "RequestsTopic"
+              },
+              "Condition": {
+                "ArnLike": {
+                  "AWS:SourceArn": "arn:aws:s3:::patientapp-kalpeshj777-requestfile-dev"
+                }
+              }
+            }
+          ]
+        },
+        "Topics": [
+          {
+            "Ref": "RequestsTopic"
+          }
+        ]
+      }
+    },
+    "RequestsTopic": {
+      "Type": "AWS::SNS::Topic",
+      "Properties": {
+        "DisplayName": "Request bucket topic",
+        "TopicName": "requestsTopic-dev"
+      }
     }
   },
   "Outputs": {
@@ -1855,43 +1917,43 @@
     "AuthLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "AuthLambdaVersionRA3caGWB1PaeUUVuhJ7A6bODj2TlsYM4cn9ZL1Omq9g"
+        "Ref": "AuthLambdaVersion1zPhk72omUiysXqxtZWyrcWMgIWYyJHkDPx7QzoEE"
       }
     },
     "GetPatientsLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GetPatientsLambdaVersion9Ta7s89AV5ENcJoeFpAphmlM92QUMVlvs0TZST6aA"
+        "Ref": "GetPatientsLambdaVersionkCQKt5g0ocXVwyptKiUdxBrtTZuKwMOh4OfjNV3urU"
       }
     },
     "CreatePatientLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "CreatePatientLambdaVersion9gO8pi9neGi3zBCjbYYx3Fu0wb3Fah7nK9B6y4murwU"
+        "Ref": "CreatePatientLambdaVersionup3Ef9CQl81ZyK9ZfEYlbCQv37XCWmlLDT96G2Fu0"
       }
     },
     "DeletePatientLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "DeletePatientLambdaVersionDvILhTcNvXXZvh3IeJ54YqTQVVl83CayzEejozomjsI"
+        "Ref": "DeletePatientLambdaVersionxmcm7p82gnEsNwmPHXxD9JzNkly35bcya5wFRSDCGgE"
       }
     },
     "UpdatePatientLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "UpdatePatientLambdaVersionp2OQWEk59njehDjXkBTVgZM5uaTFFhwkFnTxXKic"
+        "Ref": "UpdatePatientLambdaVersiontvxkhPPOR9J8DWc7NiMUGOp0lXhRuCsimtjDsTdo"
       }
     },
     "GetRequestsLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GetRequestsLambdaVersion5ZA01Sa5jlLrYoABiiexHlQPaKz35eimCyzsStfhE"
+        "Ref": "GetRequestsLambdaVersionLydzHD2AzTtkzN0XBIedBM5anY0H4x9BS3mYsPbBPSs"
       }
     },
     "CreateRequestLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "CreateRequestLambdaVersionOZSHG4m0ZgJ9ZDiw5RV9KJlgP2X8tX2QbOh4SizzI"
+        "Ref": "CreateRequestLambdaVersionYlbeuxndgIVq1kLwumCbsBSuKaybTyAqkqBjX0PBAtg"
       }
     },
     "ServiceEndpoint": {
