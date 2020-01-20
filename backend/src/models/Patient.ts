@@ -3,7 +3,6 @@ export interface Patient {
     firstName: string
     lastName: string
     cellPhone: string
-    careProviderId: string
-    careProviderEmail: string
+
   }
   

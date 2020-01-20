@@ -4,6 +4,7 @@ service:
 plugins:
   - serverless-webpack
   - serverless-iam-roles-per-function
+  - serverless-plugin-canary-deployments
 
 tracing:
   lambda: true
@@ -20,7 +21,9 @@ provider:
   environment:
     AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1
     PATIENTS_TABLE: Patients-${self:provider.stage}
-  
+    REQUESTS_TABLE: PatientsRequests-${self:provider.stage}
+    REQUEST_ID_INDEX: RequestIdIndex
+
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -62,6 +65,9 @@ functions:
          cors: true
          authorizer: Auth
          reqValidatorName: RequestBodyValidator
+    #deploymentSettings:
+      #type: Linear10PercentEvery1Minute
+      #alias: Live
     iamRoleStatements:
       - Effect: Allow
         Action:
@@ -101,6 +107,26 @@ functions:
           - dynamodb:Query
           - dynamodb:Scan
         Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.PATIENTS_TABLE}
+
+  GetRequests:
+    handler: src/lambda/http/getRequests.handler
+    events:
+      - http:
+          method: get
+          path: patients/{patientId}/requests
+          cors: true
+    iamRoleStatements:
+      - Effect: Allow
+        Action:
+          - dynamodb:Query
+          - dynamodb:GetItem
+        Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.PATIENTS_TABLE}
+      - Effect: Allow
+        Action:
+          - dynamodb:Query
+          - dynamodb:GetItem
+        Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.REQUESTS_TABLE}
+
         
 resources:
   Resources:
@@ -127,3 +153,26 @@ resources:
             KeyType: HASH
         BillingMode: PAY_PER_REQUEST
         TableName: ${self:provider.environment.PATIENTS_TABLE}
+    
+    RequestsDynamoDBTable:
+      Type: "AWS::DynamoDB::Table"
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: patientId
+            AttributeType: S
+          - AttributeName: timestamp
+            AttributeType: S
+        KeySchema:
+          - AttributeName: patientId
+            KeyType: HASH
+          - AttributeName: timestamp
+            KeyType: RANGE
+        BillingMode: PAY_PER_REQUEST
+        TableName: ${self:provider.environment.REQUESTS_TABLE}
+        GlobalSecondaryIndexes:
+          - IndexName: ${self:provider.environment.REQUEST_ID_INDEX}
+            KeySchema:
+            - AttributeName: requestId
+              KeyType: HASH
+            Projection:
+              ProjectionType: ALL

@@ -35,13 +35,13 @@ async updatePatient(patientId: string,updatePatientRequest:UpdatePatientRequest 
         Key: {
             patientId : patientId
             },
-        UpdateExpression: 'set firstName= :firstName,  lastName= :lastName ,cellPhone= :cellPhone , careProviderId = :careProviderId  ',
+        UpdateExpression: 'set firstName= :firstName,  lastName= :lastName ,cellPhone= :cellPhone',
         ExpressionAttributeValues:{
         
             ':firstName' :updatePatientRequest.firstName,
             ':lastName' :updatePatientRequest.lastName,
             ':cellPhone' :updatePatientRequest.cellPhone,
-            ':careProviderId' :updatePatientRequest.careProviderId
+          
         },
         ReturnValues:"ALL_OLD"
       }).promise()
@@ -81,8 +81,6 @@ async deletePatient(patientId: string): Promise<String>{
     return patient
   }
 }
-
-
 
 function createDynamoDBClient() {
 

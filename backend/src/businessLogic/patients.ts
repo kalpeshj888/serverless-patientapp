@@ -18,9 +18,7 @@ export async function createPatient(
    patientId:createPatientRequest.patientId,
    firstName: createPatientRequest.firstName,
    lastName: createPatientRequest.lastName,
-   cellPhone: createPatientRequest.cellPhone,
-   careProviderId: createPatientRequest.careProviderId,
-   careProviderEmail: createPatientRequest.careProviderEmail
+   cellPhone: createPatientRequest.cellPhone
   })
 }
 

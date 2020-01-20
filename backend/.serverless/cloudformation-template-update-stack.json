@@ -86,6 +86,12 @@
         "LogGroupName": "/aws/lambda/serverless-patient-app-dev-UpdatePatient"
       }
     },
+    "GetRequestsLogGroup": {
+      "Type": "AWS::Logs::LogGroup",
+      "Properties": {
+        "LogGroupName": "/aws/lambda/serverless-patient-app-dev-GetRequests"
+      }
+    },
     "IamRoleLambdaExecution": {
       "Type": "AWS::IAM::Role",
       "Properties": {
@@ -178,7 +184,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-patient-app/dev/1579388102920-2020-01-18T22:55:02.920Z/serverless-patient-app.zip"
+          "S3Key": "serverless/serverless-patient-app/dev/1579532662350-2020-01-20T15:04:22.350Z/serverless-patient-app.zip"
         },
         "FunctionName": "serverless-patient-app-dev-Auth",
         "Handler": "src/lambda/auth/auth0Authorizer.handler",
@@ -194,7 +200,8 @@
         "Environment": {
           "Variables": {
             "AWS_NODEJS_CONNECTION_REUSE_ENABLED": 1,
-            "PATIENTS_TABLE": "Patients-dev"
+            "PATIENTS_TABLE": "Patients-dev",
+            "REQUESTS_TABLE": "PatientsRequests-dev"
           }
         }
       },
@@ -203,14 +210,14 @@
         "IamRoleLambdaExecution"
       ]
     },
-    "AuthLambdaVersionTl6usd66NuE4W76MyZ0GLp3tVpwv2LbWbWRYC3fn3sk": {
+    "AuthLambdaVersionz3iJhR0iiPgNuTNOOX2JDoTiCR9xpyDcyVIlGNCQ": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "AuthLambdaFunction"
         },
-        "CodeSha256": "9eblBCe6M/R/GDxuoGPdpIrnQNId41XbVc6/Rtr3svk="
+        "CodeSha256": "53Qb8/rkF2xFVAUSK02mT+h+/fRDE48mMsB1EH+hRek="
       }
     },
     "GetPatientsLambdaFunction": {
@@ -220,7 +227,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-patient-app/dev/1579388102920-2020-01-18T22:55:02.920Z/serverless-patient-app.zip"
+          "S3Key": "serverless/serverless-patient-app/dev/1579532662350-2020-01-20T15:04:22.350Z/serverless-patient-app.zip"
         },
         "FunctionName": "serverless-patient-app-dev-GetPatients",
         "Handler": "src/lambda/http/getPatients.handler",
@@ -236,7 +243,8 @@
         "Environment": {
           "Variables": {
             "AWS_NODEJS_CONNECTION_REUSE_ENABLED": 1,
-            "PATIENTS_TABLE": "Patients-dev"
+            "PATIENTS_TABLE": "Patients-dev",
+            "REQUESTS_TABLE": "PatientsRequests-dev"
           }
         }
       },
@@ -245,14 +253,14 @@
         "GetPatientsLogGroup"
       ]
     },
-    "GetPatientsLambdaVersionG5AhklZVg9amPEmg0VliSAxoUq6Lzfm5JaJLoj3c9TY": {
+    "GetPatientsLambdaVersionfedgg4SI0lb5QXtJsFcFpZ2La1YKNPzMC3fY7ReVM": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GetPatientsLambdaFunction"
         },
-        "CodeSha256": "9eblBCe6M/R/GDxuoGPdpIrnQNId41XbVc6/Rtr3svk="
+        "CodeSha256": "53Qb8/rkF2xFVAUSK02mT+h+/fRDE48mMsB1EH+hRek="
       }
     },
     "CreatePatientLambdaFunction": {
@@ -262,7 +270,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-patient-app/dev/1579388102920-2020-01-18T22:55:02.920Z/serverless-patient-app.zip"
+          "S3Key": "serverless/serverless-patient-app/dev/1579532662350-2020-01-20T15:04:22.350Z/serverless-patient-app.zip"
         },
         "FunctionName": "serverless-patient-app-dev-CreatePatient",
         "Handler": "src/lambda/http/createPatient.handler",
@@ -278,7 +286,8 @@
         "Environment": {
           "Variables": {
             "AWS_NODEJS_CONNECTION_REUSE_ENABLED": 1,
-            "PATIENTS_TABLE": "Patients-dev"
+            "PATIENTS_TABLE": "Patients-dev",
+            "REQUESTS_TABLE": "PatientsRequests-dev"
           }
         }
       },
@@ -287,14 +296,14 @@
         "CreatePatientLogGroup"
       ]
     },
-    "CreatePatientLambdaVersion8xLTJ4I9kOkiF1zPTOCb7ksBwsEXAUiwP0skwcnc4": {
+    "CreatePatientLambdaVersionK49r3pU5H3mhSOGxSDRPOBV1nO1Xm0g6fp3e0R4Q": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "CreatePatientLambdaFunction"
         },
-        "CodeSha256": "9eblBCe6M/R/GDxuoGPdpIrnQNId41XbVc6/Rtr3svk="
+        "CodeSha256": "53Qb8/rkF2xFVAUSK02mT+h+/fRDE48mMsB1EH+hRek="
       }
     },
     "DeletePatientLambdaFunction": {
@@ -304,7 +313,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-patient-app/dev/1579388102920-2020-01-18T22:55:02.920Z/serverless-patient-app.zip"
+          "S3Key": "serverless/serverless-patient-app/dev/1579532662350-2020-01-20T15:04:22.350Z/serverless-patient-app.zip"
         },
         "FunctionName": "serverless-patient-app-dev-DeletePatient",
         "Handler": "src/lambda/http/deletePatient.handler",
@@ -320,7 +329,8 @@
         "Environment": {
           "Variables": {
             "AWS_NODEJS_CONNECTION_REUSE_ENABLED": 1,
-            "PATIENTS_TABLE": "Patients-dev"
+            "PATIENTS_TABLE": "Patients-dev",
+            "REQUESTS_TABLE": "PatientsRequests-dev"
           }
         }
       },
@@ -329,14 +339,14 @@
         "DeletePatientLogGroup"
       ]
     },
-    "DeletePatientLambdaVersionYyInozRjiDb6ELSMAnOoyKLKOLievgp0ER6GdDNnFs": {
+    "DeletePatientLambdaVersionOigd4fXfwrIydwWjzoTtN4jh0iIYQYqyusijWtFyN0": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "DeletePatientLambdaFunction"
         },
-        "CodeSha256": "9eblBCe6M/R/GDxuoGPdpIrnQNId41XbVc6/Rtr3svk="
+        "CodeSha256": "53Qb8/rkF2xFVAUSK02mT+h+/fRDE48mMsB1EH+hRek="
       }
     },
     "UpdatePatientLambdaFunction": {
@@ -346,7 +356,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-patient-app/dev/1579388102920-2020-01-18T22:55:02.920Z/serverless-patient-app.zip"
+          "S3Key": "serverless/serverless-patient-app/dev/1579532662350-2020-01-20T15:04:22.350Z/serverless-patient-app.zip"
         },
         "FunctionName": "serverless-patient-app-dev-UpdatePatient",
         "Handler": "src/lambda/http/updatePatient.handler",
@@ -362,7 +372,8 @@
         "Environment": {
           "Variables": {
             "AWS_NODEJS_CONNECTION_REUSE_ENABLED": 1,
-            "PATIENTS_TABLE": "Patients-dev"
+            "PATIENTS_TABLE": "Patients-dev",
+            "REQUESTS_TABLE": "PatientsRequests-dev"
           }
         }
       },
@@ -371,14 +382,57 @@
         "UpdatePatientLogGroup"
       ]
     },
-    "UpdatePatientLambdaVersionNbeO0ga4ATRdZQexFasCFzoxCdg4GI0dOlqI": {
+    "UpdatePatientLambdaVersionToeWFWxFsaOdPxFGp2jK6kUnBCvPMptWdEqpQbSSo": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "UpdatePatientLambdaFunction"
         },
-        "CodeSha256": "9eblBCe6M/R/GDxuoGPdpIrnQNId41XbVc6/Rtr3svk="
+        "CodeSha256": "53Qb8/rkF2xFVAUSK02mT+h+/fRDE48mMsB1EH+hRek="
+      }
+    },
+    "GetRequestsLambdaFunction": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Ref": "ServerlessDeploymentBucket"
+          },
+          "S3Key": "serverless/serverless-patient-app/dev/1579532662350-2020-01-20T15:04:22.350Z/serverless-patient-app.zip"
+        },
+        "FunctionName": "serverless-patient-app-dev-GetRequests",
+        "Handler": "src/lambda/http/getRequests.handler",
+        "MemorySize": 1024,
+        "Role": {
+          "Fn::GetAtt": [
+            "GetRequestsIamRoleLambdaExecution",
+            "Arn"
+          ]
+        },
+        "Runtime": "nodejs10.x",
+        "Timeout": 6,
+        "Environment": {
+          "Variables": {
+            "AWS_NODEJS_CONNECTION_REUSE_ENABLED": 1,
+            "PATIENTS_TABLE": "Patients-dev",
+            "REQUESTS_TABLE": "PatientsRequests-dev"
+          }
+        }
+      },
+      "DependsOn": [
+        "GetRequestsIamRoleLambdaExecution",
+        "GetRequestsLogGroup"
+      ]
+    },
+    "GetRequestsLambdaVersionLfRC8eteKVziq2KwcpeU9vZV3zfylwlM6eZg1HCtdU": {
+      "Type": "AWS::Lambda::Version",
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "GetRequestsLambdaFunction"
+        },
+        "CodeSha256": "53Qb8/rkF2xFVAUSK02mT+h+/fRDE48mMsB1EH+hRek="
       }
     },
     "ApiGatewayRestApi": {
@@ -415,6 +469,18 @@
           "Ref": "ApiGatewayResourcePatients"
         },
         "PathPart": "{patientId}",
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        }
+      }
+    },
+    "ApiGatewayResourcePatientsPatientidVarRequests": {
+      "Type": "AWS::ApiGateway::Resource",
+      "Properties": {
+        "ParentId": {
+          "Ref": "ApiGatewayResourcePatientsPatientidVar"
+        },
+        "PathPart": "requests",
         "RestApiId": {
           "Ref": "ApiGatewayRestApi"
         }
@@ -504,6 +570,51 @@
         },
         "ResourceId": {
           "Ref": "ApiGatewayResourcePatientsPatientidVar"
+        },
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        }
+      }
+    },
+    "ApiGatewayMethodPatientsPatientidVarRequestsOptions": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "AuthorizationType": "NONE",
+        "HttpMethod": "OPTIONS",
+        "MethodResponses": [
+          {
+            "StatusCode": "200",
+            "ResponseParameters": {
+              "method.response.header.Access-Control-Allow-Origin": true,
+              "method.response.header.Access-Control-Allow-Headers": true,
+              "method.response.header.Access-Control-Allow-Methods": true
+            },
+            "ResponseModels": {}
+          }
+        ],
+        "RequestParameters": {},
+        "Integration": {
+          "Type": "MOCK",
+          "RequestTemplates": {
+            "application/json": "{statusCode:200}"
+          },
+          "ContentHandling": "CONVERT_TO_TEXT",
+          "IntegrationResponses": [
+            {
+              "StatusCode": "200",
+              "ResponseParameters": {
+                "method.response.header.Access-Control-Allow-Origin": "'*'",
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
+                "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET'"
+              },
+              "ResponseTemplates": {
+                "application/json": "#set($origin = $input.params(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params(\"origin\")) #end\n#if($origin.matches(\".*\")) #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin) #end"
+              }
+            }
+          ]
+        },
+        "ResourceId": {
+          "Ref": "ApiGatewayResourcePatientsPatientidVarRequests"
         },
         "RestApiId": {
           "Ref": "ApiGatewayRestApi"
@@ -698,6 +809,49 @@
       },
       "DependsOn": "AuthApiGatewayAuthorizer"
     },
+    "ApiGatewayMethodPatientsPatientidVarRequestsGet": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "GET",
+        "RequestParameters": {},
+        "ResourceId": {
+          "Ref": "ApiGatewayResourcePatientsPatientidVarRequests"
+        },
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        },
+        "ApiKeyRequired": false,
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationHttpMethod": "POST",
+          "Type": "AWS_PROXY",
+          "Uri": {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":apigateway:",
+                {
+                  "Ref": "AWS::Region"
+                },
+                ":lambda:path/2015-03-31/functions/",
+                {
+                  "Fn::GetAtt": [
+                    "GetRequestsLambdaFunction",
+                    "Arn"
+                  ]
+                },
+                "/invocations"
+              ]
+            ]
+          }
+        },
+        "MethodResponses": []
+      }
+    },
     "AuthApiGatewayAuthorizer": {
       "Type": "AWS::ApiGateway::Authorizer",
       "Properties": {
@@ -732,7 +886,7 @@
         "Type": "TOKEN"
       }
     },
-    "ApiGatewayDeployment1579388069061": {
+    "ApiGatewayDeployment1579532633130": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -743,10 +897,12 @@
       "DependsOn": [
         "ApiGatewayMethodPatientsOptions",
         "ApiGatewayMethodPatientsPatientidVarOptions",
+        "ApiGatewayMethodPatientsPatientidVarRequestsOptions",
         "ApiGatewayMethodPatientsGet",
         "ApiGatewayMethodPatientsPost",
         "ApiGatewayMethodPatientsPatientidVarDelete",
-        "ApiGatewayMethodPatientsPatientidVarPatch"
+        "ApiGatewayMethodPatientsPatientidVarPatch",
+        "ApiGatewayMethodPatientsPatientidVarRequestsGet"
       ]
     },
     "GetPatientsLambdaPermissionApiGateway": {
@@ -879,6 +1035,43 @@
         "FunctionName": {
           "Fn::GetAtt": [
             "UpdatePatientLambdaFunction",
+            "Arn"
+          ]
+        },
+        "Action": "lambda:InvokeFunction",
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region"
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":",
+              {
+                "Ref": "ApiGatewayRestApi"
+              },
+              "/*/*"
+            ]
+          ]
+        }
+      }
+    },
+    "GetRequestsLambdaPermissionApiGateway": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "GetRequestsLambdaFunction",
             "Arn"
           ]
         },
@@ -1218,6 +1411,90 @@
         "ManagedPolicyArns": []
       }
     },
+    "GetRequestsIamRoleLambdaExecution": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Principal": {
+                "Service": [
+                  "lambda.amazonaws.com"
+                ]
+              },
+              "Action": [
+                "sts:AssumeRole"
+              ]
+            }
+          ]
+        },
+        "Policies": [
+          {
+            "PolicyName": {
+              "Fn::Join": [
+                "-",
+                [
+                  "dev",
+                  "serverless-patient-app",
+                  "lambda"
+                ]
+              ]
+            },
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "logs:CreateLogStream",
+                    "logs:PutLogEvents"
+                  ],
+                  "Resource": [
+                    {
+                      "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/serverless-patient-app-dev-GetRequests:*:*"
+                    }
+                  ]
+                },
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "dynamodb:Query",
+                    "dynamodb:GetItem"
+                  ],
+                  "Resource": "arn:aws:dynamodb:us-east-2:*:table/Patients-dev"
+                },
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "dynamodb:Query",
+                    "dynamodb:GetItem"
+                  ],
+                  "Resource": "arn:aws:dynamodb:us-east-2:*:table/PatientsRequests-dev"
+                }
+              ]
+            }
+          }
+        ],
+        "Path": "/",
+        "RoleName": {
+          "Fn::Join": [
+            "-",
+            [
+              "serverless-patient-app",
+              "dev",
+              "GetRequests",
+              {
+                "Ref": "AWS::Region"
+              },
+              "lambdaRole"
+            ]
+          ]
+        },
+        "ManagedPolicyArns": []
+      }
+    },
     "GatewayResponseDefault4XX": {
       "Type": "AWS::ApiGateway::GatewayResponse",
       "Properties": {
@@ -1250,6 +1527,33 @@
         "BillingMode": "PAY_PER_REQUEST",
         "TableName": "Patients-dev"
       }
+    },
+    "RequestsDynamoDBTable": {
+      "Type": "AWS::DynamoDB::Table",
+      "Properties": {
+        "AttributeDefinitions": [
+          {
+            "AttributeName": "patientId",
+            "AttributeType": "S"
+          },
+          {
+            "AttributeName": "timestamp",
+            "AttributeType": "S"
+          }
+        ],
+        "KeySchema": [
+          {
+            "AttributeName": "patientId",
+            "KeyType": "HASH"
+          },
+          {
+            "AttributeName": "timestamp",
+            "KeyType": "RANGE"
+          }
+        ],
+        "BillingMode": "PAY_PER_REQUEST",
+        "TableName": "PatientsRequests-dev"
+      }
     }
   },
   "Outputs": {
@@ -1261,31 +1565,37 @@
     "AuthLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "AuthLambdaVersionTl6usd66NuE4W76MyZ0GLp3tVpwv2LbWbWRYC3fn3sk"
+        "Ref": "AuthLambdaVersionz3iJhR0iiPgNuTNOOX2JDoTiCR9xpyDcyVIlGNCQ"
       }
     },
     "GetPatientsLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GetPatientsLambdaVersionG5AhklZVg9amPEmg0VliSAxoUq6Lzfm5JaJLoj3c9TY"
+        "Ref": "GetPatientsLambdaVersionfedgg4SI0lb5QXtJsFcFpZ2La1YKNPzMC3fY7ReVM"
       }
     },
     "CreatePatientLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "CreatePatientLambdaVersion8xLTJ4I9kOkiF1zPTOCb7ksBwsEXAUiwP0skwcnc4"
+        "Ref": "CreatePatientLambdaVersionK49r3pU5H3mhSOGxSDRPOBV1nO1Xm0g6fp3e0R4Q"
       }
     },
     "DeletePatientLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "DeletePatientLambdaVersionYyInozRjiDb6ELSMAnOoyKLKOLievgp0ER6GdDNnFs"
+        "Ref": "DeletePatientLambdaVersionOigd4fXfwrIydwWjzoTtN4jh0iIYQYqyusijWtFyN0"
       }
     },
     "UpdatePatientLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "UpdatePatientLambdaVersionNbeO0ga4ATRdZQexFasCFzoxCdg4GI0dOlqI"
+        "Ref": "UpdatePatientLambdaVersionToeWFWxFsaOdPxFGp2jK6kUnBCvPMptWdEqpQbSSo"
+      }
+    },
+    "GetRequestsLambdaFunctionQualifiedArn": {
+      "Description": "Current Lambda function version",
+      "Value": {
+        "Ref": "GetRequestsLambdaVersionLfRC8eteKVziq2KwcpeU9vZV3zfylwlM6eZg1HCtdU"
       }
     },
     "ServiceEndpoint": {

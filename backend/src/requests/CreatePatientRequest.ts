@@ -3,7 +3,5 @@ export interface CreatePatientRequest {
     firstName: string
     lastName: string
     cellPhone: string
-    careProviderId: string
-    careProviderEmail: string
   }
   
