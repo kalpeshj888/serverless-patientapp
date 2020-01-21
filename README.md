@@ -88,7 +88,7 @@ Postman Collection file attached.
 * Dynamo DB tables with  Composite key and GlobalSecondaryIndexes implemented
 
 
-#Following AWS Services used:
+# Following AWS Services used:
 * Lambda
 * API Gateway
 * DynamoDB
