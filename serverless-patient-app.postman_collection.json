@@ -1,0 +1,232 @@
+{
+	"info": {
+		"_postman_id": "1cdeb0f2-9768-4da8-850a-85507adccbbd",
+		"name": "serverless-patient-app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get all Patients",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{authToken}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://3u7fm5m7f8.execute-api.us-east-2.amazonaws.com/dev/patients",
+					"protocol": "https",
+					"host": [
+						"3u7fm5m7f8",
+						"execute-api",
+						"us-east-2",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"patients"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all Requests for Patient",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{authToken}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://3u7fm5m7f8.execute-api.us-east-2.amazonaws.com/dev/patients/mansi1.man@gmail.com/requests",
+					"protocol": "https",
+					"host": [
+						"3u7fm5m7f8",
+						"execute-api",
+						"us-east-2",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"patients",
+						"mansi1.man@gmail.com",
+						"requests"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create  Requests for Patient",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{authToken}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"requestDescription\": \"Please review my latest X-ray\",\n    \"careProviderEmail\": \"jainkalpesh@gmail.com\"\n}"
+				},
+				"url": {
+					"raw": "https://3u7fm5m7f8.execute-api.us-east-2.amazonaws.com/dev/patients/mansi1.man@gmail.com/requests",
+					"protocol": "https",
+					"host": [
+						"3u7fm5m7f8",
+						"execute-api",
+						"us-east-2",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"patients",
+						"mansi1.man@gmail.com",
+						"requests"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create  Patient",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{authToken}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n            \"cellPhone\": \"5209037846 \",\n            \"patientId\": \"mansi1.man@gmail.com\",\n            \"firstName\": \"Mansi\",\n            \"lastName\": \"Man\"\n  }"
+				},
+				"url": {
+					"raw": "https://3u7fm5m7f8.execute-api.us-east-2.amazonaws.com/dev/patients",
+					"protocol": "https",
+					"host": [
+						"3u7fm5m7f8",
+						"execute-api",
+						"us-east-2",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"patients"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete  Patient",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{authToken}}"
+					}
+				],
+				"url": {
+					"raw": "https://3u7fm5m7f8.execute-api.us-east-2.amazonaws.com/dev/patients/mansi123.man@gmail.com",
+					"protocol": "https",
+					"host": [
+						"3u7fm5m7f8",
+						"execute-api",
+						"us-east-2",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"patients",
+						"mansi123.man@gmail.com"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Patch Patient",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{authToken}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n            \"cellPhone\": \"5209037847 \",\n            \"patientId\": \"mansi1.man@gmail.com\",\n            \"firstName\": \"Mansi\",\n            \"lastName\": \"Man\"\n  }"
+				},
+				"url": {
+					"raw": "https://3u7fm5m7f8.execute-api.us-east-2.amazonaws.com/dev/patients/mansi1.man@gmail.com",
+					"protocol": "https",
+					"host": [
+						"3u7fm5m7f8",
+						"execute-api",
+						"us-east-2",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"patients",
+						"mansi1.man@gmail.com"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "7aec7478-56bb-4efc-9b64-ca12e911ea0a",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "070c2a6d-124d-47de-a28b-b95506c94b84",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "fd7c805b-3b72-4e28-8735-2a6e41b67ed0",
+			"key": "authToken",
+			"value": "",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}

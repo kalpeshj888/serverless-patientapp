@@ -32,6 +32,24 @@ provider:
         - codedeploy:*
       Resource:
         - '*'
+    - Effect: Allow
+      Action:
+        - dynamodb:PutItem
+        - dynamodb:GetItem
+        - dynamodb:Query
+        - dynamodb:Scan
+      Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.REQUESTS_TABLE}
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+      Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.REQUESTS_TABLE}/index/${self:provider.environment.REQUEST_ID_INDEX}
+    - Effect: Allow
+      Action:
+        - ses:SendEmail
+        - ses:SendRawEmail
+      Resource: "*"
+        
+
     #- Effect: Allow
     #  Action:
     #    - dynamodb:Scan
@@ -154,9 +172,22 @@ functions:
           - s3:GetObject
         Resource: arn:aws:s3:::${self:provider.environment.REQUESTFILE_S3_BUCKET}/*
 
+  SendUploadNotifications:
+    handler: src/lambda/sns/sendNotifications.handler
+    events:
+      - sns:
+          arn:
+            Fn::Join:
+              - ':'
+              - - arn:aws:sns
+                - Ref: AWS::Region
+                - Ref: AWS::AccountId
+                - ${self:custom.topicName}
+          topicName: ${self:custom.topicName}
+
 resources:
   Resources:
-    # TODO: Add any necessary AWS resources
+    #Add any necessary AWS resources
     GatewayResponseDefault4XX:
       Type: AWS::ApiGateway::GatewayResponse
       Properties:
