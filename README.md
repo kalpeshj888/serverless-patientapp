@@ -5,12 +5,12 @@ serverless-patientapp is a application built using serverless concepts learnt in
 The application provides a backend CRUD API for Patients.
 
 It also provides ability for Patients to create Requests.
-Request can be created when patients want to communicate with Careproviders.
+Request can be created when patients want to communicate with Care Providers.
 Patient can create a new request when they have a scheduling request, quest about some of the symptoms they are having or want to communicate about documents from other care providers.
 Basically, Request allows Patients to communicate with Care Providers.
 
 Patients can also securely load documents when they create a new request.
-The application also sends out notifications when new documents are uplaoded.
+The application also sends out notifications when new documents are uploaded.
 
 # Attribute Information
 
@@ -32,7 +32,7 @@ Example - payload fo create patient
 Each Request item include following fields:
 
 patientId - Id of patient making the request
-timestamp  - timestamp of when requets was made
+timestamp  - timestamp of when request was made
 requestId - request Id for the request
 requestDescription - description of the request
 requestFileURL - file URL of document associated with the request
@@ -69,21 +69,21 @@ Example response when creating request:
 S3 bucket also publishes all upload all events to SNS topic which is configured in serverless.yml file
 * getRequests - gets all requests for a patient
 * sendNotification - gets events from SNS topic when new documents are uploaded.
-It queries request table based on the key recievd from the event to retrive caregiver email and logs an email that can be sent to the email address.
+It queries request table based on the key received from the event to retrieve caregiver email and logs an email that can be sent to the email address.
 * Auth - Custom auth is implemented for all lambda functions.
-if authToken varible is 123, request will be authorized, else it will be denied.
+if authToken variable is 123, request will be authorized, else it will be denied.
 
 Postman Collection file attached.
  
 
 # Best Practices implemented
 * Deployment is fully automated using serverless framework
-* Business logic and database accessss is seperated for Patient API ( Hexagonal Design)
+* Business logic and database access is separated for Patient API ( Hexagonal Design)
 * Sufficient logs and metrics generated using Cloud Watch
 * Dynamo DB tables with  Composite key and GlobalSecondaryIndexes implemented
 * S3 bucket is not public as it can have sensitive information
 * Custom Auth function implemented for lambda functions
-* Minimum privelages provided for lamda functions
+* Minimum privileges provided for lamda functions
 * Canary Deployment enabled
 * Tracing enabled
 * Presigned URL for uploading documents implemented
@@ -98,6 +98,8 @@ Postman Collection file attached.
 * SNS
 * Code Deploy
 * Cloud Formation
+
+
 
 
 
