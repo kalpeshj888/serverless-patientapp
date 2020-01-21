@@ -80,12 +80,13 @@ Postman Collection file attached.
 * Deployment is fully automated using serverless framework
 * Business logic and database accessss is seperated for Patient API ( Hexagonal Design)
 * Sufficient logs and metrics generated using Cloud Watch
+* Dynamo DB tables with  Composite key and GlobalSecondaryIndexes implemented
 * S3 bucket is not public as it can have sensitive information
 * Custom Auth function implemented for lambda functions
+* Minimum privelages provided for lamda functions
 * Canary Deployment enabled
-* Application tracing enabled
+* Tracing enabled
 * Presigned URL for uploading documents implemented
-* Dynamo DB tables with  Composite key and GlobalSecondaryIndexes implemented
 
 
 # Following AWS Services used:
